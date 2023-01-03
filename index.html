@@ -24,11 +24,11 @@ body, html {
   left: 16px;
 }
 
-.bottomright {
+.bottomleft {
   position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
-  right: 1%;
+  left: 1%;
   font-size:large;
   font-weight: bold;
   color:rgb(255, 13, 255);
@@ -37,7 +37,7 @@ body, html {
   position: absolute;
   bottom: 0px;
   margin-bottom: 0px;
-  left: 1%;
+  right: 0;
   font-size:small;
   font-weight: lighter;
   /* color:rgb(255, 13, 255); */
@@ -62,8 +62,7 @@ body, html {
   color:rgb(249, 73, 73);
 }
 </style>
-<body>
-
+<body onload="typeWriter()">
 <div class="bgimg">
   <div class="topleft">
     <p>Samrat Subedi</p>
@@ -74,9 +73,10 @@ body, html {
     <h3 id="text">Days Left</h3>
   </div>
   <div>
+    <!-- <button onclick="typeWriter()">Click me</button> -->
     <div id="Current_Date"></div>
-  <div class="bottomright">
-    <p>Please have some Patience<br>We will be back soon...
+  <div class="bottomleft">
+      <p id="info">
     </p>
   </div>
   </div>
@@ -90,6 +90,19 @@ body, html {
     console.log("Days Left: "+ day_left);
     document.getElementById("Current_Date").innerHTML = today;
     document.getElementById("dayLeft").innerHTML = day_left;
+
+    var i = 0;
+    var txt = 'Please have some Patience. We will be back soon...';
+    var speed = 50;
+
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("info").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
 
 </script>
 
